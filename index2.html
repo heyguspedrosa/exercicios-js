@@ -1,59 +1,63 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <title>Calculadora de Pagamento</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 30px;
-        }
-        label, input {
-            display: block;
-            margin-bottom: 10px;
-        }
-        #resultado {
-            margin-top: 20px;
-            font-weight: bold;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>Tela de Login Simples</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 30px;
+    }
+
+    form {
+      max-width: 300px;
+    }
+
+    label, input {
+      display: block;
+      margin-bottom: 10px;
+      width: 100%;
+    }
+
+    #mensagem {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+  </style>
 </head>
 <body>
-    <h1>Calculadora de Pagamento</h1>
-    <form id="formPagamento" onsubmit="calcular(event)">
-        <label for="horas">Horas Trabalhadas:</label>
-        <input type="number" id="horas" name="horas" required>
+  <h1>Login</h1>
 
-        <label for="valor">Valor por Hora (R$):</label>
-        <input type="number" id="valor" name="valor" required step="0.01">
+  <form id="formLogin" onsubmit="login(event)">
+    <label for="email">E-mail:</label>
+    <input type="email" id="email" name="email" required>
 
-        <button type="submit">Calcular</button>
-    </form>
+    <label for="senha">Senha:</label>
+    <input type="password" id="senha" name="senha" required>
 
-    <div id="resultado"></div>
+    <button type="submit">Entrar</button>
+  </form>
 
-    <script>
-        function calcular(event) {
-            event.preventDefault(); // Impede o envio do formulário
+  <div id="mensagem"></div>
 
-            const horasTrabalhadas = parseFloat(document.getElementById("horas").value);
-            const valorHora = parseFloat(document.getElementById("valor").value);
-            const resultadoDiv = document.getElementById("resultado");
+  <script>
+    function login(event) {
+      event.preventDefault(); // Impede o recarregamento da página
 
-            if (horasTrabalhadas <= 0) {
-                resultadoDiv.innerHTML = "<span style='color: red;'>Erro: o número de horas trabalhadas deve ser maior que zero.</span>";
-                return;
-            }
+      const email = document.getElementById("email").value;
+      const senha = document.getElementById("senha").value;
+      const mensagemDiv = document.getElementById("mensagem");
 
-            const total = horasTrabalhadas * valorHora;
-            let mensagem = `Total a receber: R$${total.toFixed(2)}`;
+      // Credenciais válidas definidas diretamente
+      const emailValido = "admin@teste.com";
+      const senhaValida = "1234";
 
-            if (total > 2000) {
-                mensagem += "<br><span style='color: green;'>Parabéns! Você recebeu mais de R$2000 este mês!</span>";
-            }
-
-            resultadoDiv.innerHTML = mensagem;
-        }
-    </script>
+      if (email === emailValido && senha === senhaValida) {
+        mensagemDiv.innerHTML = "<span style='color: green;'>Login realizado com sucesso.</span>";
+      } else {
+        mensagemDiv.innerHTML = "<span style='color: red;'>E-mail ou senha inválidos.</span>";
+      }
+    }
+  </script>
 </body>
 </html>
