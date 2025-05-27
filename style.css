@@ -5,8 +5,20 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
+.container {
+    width: 50%;
+}
+
 input {
+    margin-top: 10px;
     padding: 14px 10px;
     border-radius: 5px;
-    border-color: rgb(216, 216, 216);
+    border-style: none;
+    border: 1px solid rgb(216, 216, 216);
+}
+
+button {
+    padding: 14px 18px;
+    border-radius: 5px;
+    border-style: none;
 }
